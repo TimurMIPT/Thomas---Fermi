@@ -1,0 +1,17 @@
+function [F] = ThF_potential(x,dchidx)
+%THF_POTENTIAL solver for Chi function of Thomas-Fermi potential
+
+
+y0 = [1,dchidx];
+
+
+[z,y] = ode45(@fun,y0,x);
+
+F = y;
+end
+
+
+function df = fun(x,y)
+    df(1) =  y(2);
+    df(2) =  sqrt((y(1).^3)./x);
+end
